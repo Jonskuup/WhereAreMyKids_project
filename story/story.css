@@ -38,7 +38,7 @@ body, html {
     transform: translateX(-50%);
     width: 70%;
     padding: 30px;
-    background: white;
+    background: lightgray;
     border-radius: 30px;
     font-size: 22px;
     line-height: 1.4;
@@ -49,6 +49,14 @@ body, html {
 
 @keyframes fadeIn {
     to { opacity: 1; }
+}
+
+#continue {
+    font-size: 16px;
+    position: absolute;
+    right: 50px;
+    bottom: 10px;
+    opacity: 0.7;
 }
 
 #continue-hint {
