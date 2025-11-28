@@ -16,3 +16,7 @@ document.addEventListener("click", (e) => {
         instructionsBubble.style.display = "none";
     }
 });
+
+document.getElementById("startButton").addEventListener("click", () => {
+    window.location.href = "../story/story.html";
+})
