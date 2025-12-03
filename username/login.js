@@ -4,6 +4,8 @@ const continueGame = document.getElementById('continueGame');
 const existingUser = document.getElementById('existingUser');
 const message = document.getElementById('message');
 
+const server_url = 'http://127.0.0.1:5000';
+
 /* Step 1: Are you a new player? */
 document.getElementById('yesNew').addEventListener('click', () => {
     newPlayer.classList.add('hidden');
@@ -29,20 +31,63 @@ document.getElementById('noContinue').addEventListener('click', () => {
 });
 
 /* Step 3: Enter new username */
-document.getElementById('Enter').addEventListener('click', () => {
+document.getElementById('Enter').addEventListener('click', async () => {
     const username = document.getElementById('newUsername').value.trim();
-    if (!username) return alert('Please enter a username!');
+    if (!username) return alert(`Enter a username!`); //ERROR
 
-    enterUsername.classList.add('hidden');
-    message.textContent = `Welcome, ${username}! Starting a new game...`;
+    try {
+        const response = await fetch(`${server_url}/new_player`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({screen_name: username})
+        });
+
+        const data = await response.json()
+        const player_id = data.player_id;
+
+        if (response.ok) {
+            enterUsername.classList.add('hidden');
+            message.textContent = `Welcome, ${username}! Starting a new game...`;
+            localStorage.setItem('player_id', data.player_id);
+            localStorage.setItem('username', username);
+        } else {
+            alert(data.error);
+        }
+    } catch (err) {
+        console.log(err)
+        alert("Error connecting to the server.");
+    }
 });
 
 /* Step 4: Enter existing username */
-document.getElementById('submitExistingUser').addEventListener('click', () => {
+document.getElementById('submitExistingUser').addEventListener('click', async () => {
     const username = document.getElementById('existingUsername').value.trim();
-    if (!username) return alert('Please enter your username!');
+    if (!username) return alert(`Please enter your username!`);
 
-    existingUser.classList.add('hidden');
-    message.textContent = `Welcome back, ${username}! Continuing your game...`;
+    try {
+        const existsResp = await fetch(`${server_url}/player_exists/${username}`);
 
+        const existsData = await existsResp.json();
+        if (!existsData.exists) {
+            return alert("Player not found. Please enter a correct username.")
+        }
+
+        const idResp = await fetch(`${server_url}/game_id/${username}`);
+        const idData = await idResp.json();
+
+        if (idResp.ok) {
+            existingUser.classList.add('hidden');
+            message.textContent = `Welcome back, ${username}! Continuing your game...`;
+            localStorage.setItem('player_id', idData.game_id);
+            localStorage.setItem('username', username);
+        } else {
+            alert(idData.error);
+        }
+
+    } catch (err) {
+        console.error(err)
+        alert("Error connecting to the server.");
+    }
 });
+
+
