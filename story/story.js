@@ -31,12 +31,12 @@ function typeWriter() {
     }
 }
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
 
         const segment = storySegments[currentSegment];
 
-        /* 1. If currently typing → instantly finish the text */
+        /* 1. If currently typing -> instantly finish the text */
         if (typing) {
             if (timeoutId) {
                 clearTimeout(timeoutId)
@@ -47,11 +47,12 @@ document.addEventListener("keydown", (e) => {
             return;
         }
 
-        /* 2. If typing is done → go to next segment */
+        /* 2. If typing is done -> go to next segment */
         currentSegment++;
 
         if (currentSegment >= storySegments.length) {
-            window.location.href = "";
+            console.log("END OF STORY — REDIRECTING NOW");
+            window.location.href = "../username/login.html";
             return;
         }
 
@@ -61,9 +62,10 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+
 /* SKIP BUTTON */
 document.getElementById("skipButton").addEventListener("click", () => {
-    window.location.href = "";
+    window.location.href = "../username/login.html";
 });
 
 typeWriter();
