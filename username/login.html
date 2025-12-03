@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="login.css" rel="stylesheet">
+    <script src="login.js" defer></script>
+</head>
+<body>
+
+<div class = "container">
+
+<!-- Onko uusi pelaaja YES OR NO -->
+    <div id="newPlayer" class="newPlayer">
+        <p>Are you a new player?</p>
+        <button id="yesNew">Yes</button>
+        <button id="noNew">No</button>
+    </div>
+
+<!-- Kirjoita käyttäjänimi -->
+    <div id="enterUsername" class="enterUsername hidden">
+        <p>Enter your username:</p>
+        <input id="newUsername" type="text">
+        <button id="Enter">Enter</button>
+    </div>
+
+<!-- Haluatko jatkaa peliä YES OR NO -->
+    <div id="continueGame" class="continueGame hidden">
+        <p>Do you want to continue your game?</p>
+        <button id="yesContinue">Yes</button>
+        <button id="noContinue">No</button>
+    </div>
+
+<!-- Kirjoita olemassa oleva käyttäjänimi -->
+    <div id="existingUser" class="existingUser hidden">
+        <p>Enter your existing username:</p>
+        <input id="existingUsername" type="text">
+        <button id="submitExistingUser">Enter</button>
+    </div>
+
+    <p id = "message"></p>
+
+</div>
+</body>
+</html>
