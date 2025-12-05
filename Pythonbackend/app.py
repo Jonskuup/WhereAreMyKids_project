@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from game_functions import (
     get_eu_countries,
@@ -13,6 +14,7 @@ from game_functions import (
 )
 
 app = Flask(__name__)
+CORS(app)
 
 # Luodaan uusi pelaaja
 @app.route('/new_player', methods=['POST'])
