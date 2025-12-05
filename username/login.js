@@ -50,6 +50,9 @@ document.getElementById('Enter').addEventListener('click', async () => {
             message.textContent = `Welcome, ${username}! Starting a new game...`;
             localStorage.setItem('player_id', data.player_id);
             localStorage.setItem('username', username);
+
+            window.location.href = '../mainscreen/game.html'
+
         } else {
             alert(data.error);
         }
@@ -80,6 +83,9 @@ document.getElementById('submitExistingUser').addEventListener('click', async ()
             message.textContent = `Welcome back, ${username}! Continuing your game...`;
             localStorage.setItem('player_id', idData.game_id);
             localStorage.setItem('username', username);
+
+            window.location.href = '../mainscreen/game.html'
+
         } else {
             alert(idData.error);
         }
