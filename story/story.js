@@ -50,6 +50,11 @@ document.addEventListener("keydown", function(e) {
         /* 2. If typing is done -> go to next segment */
         currentSegment++;
 
+        // rainyCloud moving
+        if (currentSegment === 1) {
+        document.querySelector(".rainyCloud").classList.add("active");
+}
+
         if (currentSegment >= storySegments.length) {
             console.log("END OF STORY — REDIRECTING NOW");
             window.location.href = "../username/login.html";
