@@ -7,59 +7,67 @@
     <script src="game.js" defer></script>
 </head>
 <body>
-<div id="map">
-    <img src="images/europemap.jpg" id="europe-map" alt="Map of Europe">
+<div id="layout">
+    <div id="map-area">
+        <div id="map">
+            <img src="images/europemap.jpg" id="europe-map" alt="Map of Europe">
 
-    <div id="andorra" class="country-overlay" data-name="andorra"></div>
-    <div id="albania" class="country-overlay" data-name="albania"></div>
-    <div id="austria" class="country-overlay" data-name="austria"></div>
-    <div id="bosnia-and-herzegovina" class="country-overlay" data-name="bosnia and herzegovina"></div>
-    <div id="belgium" class="country-overlay" data-name="belgium"></div>
-    <div id="bulgaria" class="country-overlay" data-name="bulgaria"></div>
-    <div id="belarus" class="country-overlay" data-name="belarus"></div>
-    <div id="switzerland" class="country-overlay" data-name="switzerland"></div>
-    <div id="czech-republic" class="country-overlay" data-name="czech republic"></div>
-    <div id="germany" class="country-overlay" data-name="germany"></div>
-    <div id="denmark" class="country-overlay" data-name="denmark"></div>
-    <div id="estonia" class="country-overlay" data-name="estonia"></div>
-    <div id="spain" class="country-overlay" data-name="spain"></div>
-    <div id="finland" class="country-overlay" data-name="finland"></div>
-    <div id="faroe-islands" class="country-overlay" data-name="faroe islands"></div>
-    <div id="france" class="country-overlay" data-name="france"></div>
-    <div id="united-kingdom" class="country-overlay" data-name="united kingdom"></div>
-    <div id="guernsey" class="country-overlay" data-name="guernsey"></div>
-    <div id="gibraltar" class="country-overlay" data-name="gibraltar"></div>
-    <div id="greece" class="country-overlay" data-name="greece"></div>
-    <div id="croatia" class="country-overlay" data-name="croatia"></div>
-    <div id="hungary" class="country-overlay" data-name="hungary"></div>
-    <div id="ireland" class="country-overlay" data-name="ireland"></div>
-    <div id="isle-of-man" class="country-overlay" data-name="isle of man"></div>
-    <div id="iceland" class="country-overlay" data-name="iceland"></div>
-    <div id="italy" class="country-overlay" data-name="italy"></div>
-    <div id="jersey" class="country-overlay" data-name="jersey"></div>
-    <div id="liechtenstein" class="country-overlay" data-name="liechtenstein"></div>
-    <div id="lithuania" class="country-overlay" data-name="lithuania"></div>
-    <div id="luxembourg" class="country-overlay" data-name="luxembourg"></div>
-    <div id="latvia" class="country-overlay" data-name="latvia"></div>
-    <div id="monaco" class="country-overlay" data-name="monaco"></div>
-    <div id="moldova" class="country-overlay" data-name="moldova"></div>
-    <div id="montenegro" class="country-overlay" data-name="montenegro"></div>
-    <div id="north-macedonia" class="country-overlay" data-name="north macedonia"></div>
-    <div id="malta" class="country-overlay" data-name="malta"></div>
-    <div id="netherlands" class="country-overlay" data-name="netherlands"></div>
-    <div id="norway" class="country-overlay" data-name="norway"></div>
-    <div id="poland" class="country-overlay" data-name="poland"></div>
-    <div id="portugal" class="country-overlay" data-name="portugal"></div>
-    <div id="romania" class="country-overlay" data-name="romania"></div>
-    <div id="serbia" class="country-overlay" data-name="serbia"></div>
-    <div id="russia" class="country-overlay" data-name="russia"></div>
-    <div id="sweden" class="country-overlay" data-name="sweden"></div>
-    <div id="slovenia" class="country-overlay" data-name="slovenia"></div>
-    <div id="slovakia" class="country-overlay" data-name="slovakia"></div>
-    <div id="san-marino" class="country-overlay" data-name="san marino"></div>
-    <div id="ukraine" class="country-overlay" data-name="ukraine"></div>
-    <div id="vatican-city" class="country-overlay" data-name="vatican city"></div>
-    <div id="kosovo" class="country-overlay" data-name="kosovo"></div>
+            <div id="andorra" class="country-overlay" data-name="andorra"></div>
+            <div id="albania" class="country-overlay" data-name="albania"></div>
+            <div id="austria" class="country-overlay" data-name="austria"></div>
+            <div id="bosnia-and-herzegovina" class="country-overlay" data-name="bosnia and herzegovina"></div>
+            <div id="belgium" class="country-overlay" data-name="belgium"></div>
+            <div id="bulgaria" class="country-overlay" data-name="bulgaria"></div>
+            <div id="belarus" class="country-overlay" data-name="belarus"></div>
+            <div id="switzerland" class="country-overlay" data-name="switzerland"></div>
+            <div id="czech-republic" class="country-overlay" data-name="czech republic"></div>
+            <div id="germany" class="country-overlay" data-name="germany"></div>
+            <div id="denmark" class="country-overlay" data-name="denmark"></div>
+            <div id="estonia" class="country-overlay" data-name="estonia"></div>
+            <div id="spain" class="country-overlay" data-name="spain"></div>
+            <div id="finland" class="country-overlay" data-name="finland"></div>
+            <div id="faroe-islands" class="country-overlay" data-name="faroe islands"></div>
+            <div id="france" class="country-overlay" data-name="france"></div>
+            <div id="united-kingdom" class="country-overlay" data-name="united kingdom"></div>
+            <div id="guernsey" class="country-overlay" data-name="guernsey"></div>
+            <div id="gibraltar" class="country-overlay" data-name="gibraltar"></div>
+            <div id="greece" class="country-overlay" data-name="greece"></div>
+            <div id="croatia" class="country-overlay" data-name="croatia"></div>
+            <div id="hungary" class="country-overlay" data-name="hungary"></div>
+            <div id="ireland" class="country-overlay" data-name="ireland"></div>
+            <div id="isle-of-man" class="country-overlay" data-name="isle of man"></div>
+            <div id="iceland" class="country-overlay" data-name="iceland"></div>
+            <div id="italy" class="country-overlay" data-name="italy"></div>
+            <div id="jersey" class="country-overlay" data-name="jersey"></div>
+            <div id="liechtenstein" class="country-overlay" data-name="liechtenstein"></div>
+            <div id="lithuania" class="country-overlay" data-name="lithuania"></div>
+            <div id="luxembourg" class="country-overlay" data-name="luxembourg"></div>
+            <div id="latvia" class="country-overlay" data-name="latvia"></div>
+            <div id="monaco" class="country-overlay" data-name="monaco"></div>
+            <div id="moldova" class="country-overlay" data-name="moldova"></div>
+            <div id="montenegro" class="country-overlay" data-name="montenegro"></div>
+            <div id="north-macedonia" class="country-overlay" data-name="north macedonia"></div>
+            <div id="malta" class="country-overlay" data-name="malta"></div>
+            <div id="netherlands" class="country-overlay" data-name="netherlands"></div>
+            <div id="norway" class="country-overlay" data-name="norway"></div>
+            <div id="poland" class="country-overlay" data-name="poland"></div>
+            <div id="portugal" class="country-overlay" data-name="portugal"></div>
+            <div id="romania" class="country-overlay" data-name="romania"></div>
+            <div id="serbia" class="country-overlay" data-name="serbia"></div>
+            <div id="russia" class="country-overlay" data-name="russia"></div>
+            <div id="sweden" class="country-overlay" data-name="sweden"></div>
+            <div id="slovenia" class="country-overlay" data-name="slovenia"></div>
+            <div id="slovakia" class="country-overlay" data-name="slovakia"></div>
+            <div id="san-marino" class="country-overlay" data-name="san marino"></div>
+            <div id="ukraine" class="country-overlay" data-name="ukraine"></div>
+            <div id="vatican-city" class="country-overlay" data-name="vatican city"></div>
+            <div id="kosovo" class="country-overlay" data-name="kosovo"></div>
+        </div>
+    </div>
+
+    <div id="side-panel">
+
+    </div>
 </div>
 
 </body>
