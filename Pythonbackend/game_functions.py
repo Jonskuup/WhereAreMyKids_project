@@ -13,7 +13,7 @@ def get_new_id():
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
-    max_id = result[0] if result[0] else 0
+    max_id = int(result[0]) if result[0] else 0
     new_id_number = max_id + 1
     return str(new_id_number)
 
