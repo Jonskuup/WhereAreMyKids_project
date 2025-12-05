@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+height: 100%;
+margin: 0;
+font-family: Arial, sans-serif;
+background-color: #738080;
+
+background-image:
+    url('images/front.png'),
+    url('images/middle.png'),
+    url('images/back.png');
+
+background-size:
+    contain,
+    cover,
+    cover;
+
+background-position:
+    top center,
+    center,
+    center;
+
+background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat;
+}
