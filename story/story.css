@@ -91,3 +91,30 @@ header {
     background: #ff4444;
 }
 
+.rainyCloud {
+    position: fixed;
+    bottom: 270px; /* distanssi alakohdasta */
+    left: -120px; /* alotuspaikka */
+    width: 100px; /* pilven koko */
+    z-index: 500;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.rainyCloud img {
+    width: 350px;
+    height: auto;
+}
+
+/* ANIMAATIOT */
+
+@keyframes move_rainyCloud {
+    0% { left: -120px; }
+    100% { left: 100vw; } /* liikkuu näytön läpi */
+}
+
+.rainyCloud.active {
+    opacity: 1;
+    animation: move_rainyCloud 6s linear forwards;
+}
