@@ -100,7 +100,7 @@ background-repeat:
 #info-box {
     flex: 1;
     background: #ced8d6;
-    border-radius: 16px;
+    border-radius: 15px;
     padding: 15px;
 }
 
@@ -118,7 +118,7 @@ background-repeat:
     max-height: calc(100vh - 220px);
     aspect-ratio: 1 / 1;
     background: #9b9b9b;
-    border-radius: 20px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,6 +127,7 @@ background-repeat:
 #europe-map {
     width: 100%;
     height: 100%;
+    border-radius: 15px;
 }
 
 #guess-area {
@@ -138,9 +139,20 @@ background-repeat:
 #guess-input {
     padding: 10px 14px;
     font-size: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     border: none;
     outline: none;
+}
+
+#guess-button {
+    font-family: "BubbleFont", sans-serif;
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    background: #ff6f61;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px #d45b50;
 }
 
 #guess-button:active {
@@ -156,7 +168,7 @@ background-repeat:
 
 #status-box {
     background: #ced8d6;
-    border-radius: 16px;
+    border-radius: 15px;
     padding: 15px;
     min-height: 220px;
 }
