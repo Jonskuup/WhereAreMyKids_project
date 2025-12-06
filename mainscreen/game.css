@@ -73,6 +73,7 @@ background-repeat:
 }
 
 #left-side {
+    flex: 0 0 220px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -160,6 +161,7 @@ background-repeat:
 }
 
 #right-side {
+    flex: 0 0 260px;
     display: flex;
     flex-direction: column;
     padding: 20px;
