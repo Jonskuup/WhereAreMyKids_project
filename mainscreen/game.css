@@ -44,6 +44,7 @@ background-repeat:
     align-items: flex-start;
     padding-left: 120px;
     padding-top: 30px;
+    background: #9b9b9b;
 }
 
 #map {
@@ -53,7 +54,7 @@ background-repeat:
 }
 
 #side-panel {
-    background: rgba(255, 255, 255, 0.1);
+    background: #738080;
     border-radius: 12px;
 }
 
