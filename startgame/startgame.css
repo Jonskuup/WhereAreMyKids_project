@@ -1,7 +1,12 @@
+@font-face {
+    font-family: "BubbleFont";
+    src: url("../fonts/DailyBubble-OGGdA.ttf") format("truetype");
+}
+
 body, html {
 height: 100%;
 margin: 0;
-font-family: 'Arial', sans-serif;
+font-family: "BubbleFont", sans-serif;
 background-color: #738080;
 
 background-image:
@@ -64,6 +69,7 @@ h2 {
 }
 
 #instructionsButton {
+    font-family: BubbleFont, sans-serif;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -105,6 +111,7 @@ h2 {
 
 
 button {
+    font-family: "BubbleFont", sans-serif;
     padding: 20px 50px;
     font-size: 1.8em;
     cursor: pointer;

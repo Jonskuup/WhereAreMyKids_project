@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "BubbleFont";
+    src: url("../fonts/DailyBubble-OGGdA.ttf") format("truetype");
+}
+
 body, html {
     height: 100%;
     margin: 0;
@@ -28,7 +33,6 @@ body, html {
 
     transition: background-color 2s ease;
 }
-
 
 /* Thinking bubble */
 .bubble {
@@ -75,6 +79,7 @@ header {
 
 /* Skip button */
 #skipButton {
+    font-family: BubbleFont, sans-serif;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -91,3 +96,30 @@ header {
     background: #ff4444;
 }
 
+.rainyCloud {
+    position: fixed;
+    bottom: 270px; /* distanssi alakohdasta */
+    left: -120px; /* alotuspaikka */
+    width: 100px; /* pilven koko */
+    z-index: 500;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.rainyCloud img {
+    width: 350px;
+    height: auto;
+}
+
+/* ANIMAATIOT */
+
+@keyframes move_rainyCloud {
+    0% { left: -120px; }
+    100% { left: 100vw; } /* liikkuu näytön läpi */
+}
+
+.rainyCloud.active {
+    opacity: 1;
+    animation: move_rainyCloud 6s linear forwards;
+}
