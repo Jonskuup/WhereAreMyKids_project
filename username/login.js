@@ -43,7 +43,6 @@ document.getElementById('Enter').addEventListener('click', async () => {
         });
 
         const data = await response.json()
-        const player_id = data.player_id;
 
         if (response.ok) {
             enterUsername.classList.add('hidden');
@@ -70,25 +69,30 @@ document.getElementById('submitExistingUser').addEventListener('click', async ()
     try {
         const existsResp = await fetch(`${server_url}/player_exists/${username}`);
 
+        if (!existsResp.ok) {
+            return alert("Server error checking username.");
+        }
+
         const existsData = await existsResp.json();
+
         if (!existsData.exists) {
             return alert("Player not found. Please enter a correct username.")
         }
 
         const idResp = await fetch(`${server_url}/game_id/${username}`);
+
+        if (!idResp.ok) {
+            return alert("Server error getting saved game.");
+        }
+
         const idData = await idResp.json();
 
-        if (idResp.ok) {
-            existingUser.classList.add('hidden');
-            message.textContent = `Welcome back, ${username}! Continuing your game...`;
-            localStorage.setItem('player_id', idData.game_id);
-            localStorage.setItem('username', username);
+        existingUser.classList.add('hidden');
+        message.textContent = `Welcome back, ${username}! Continuing your game...`;
+        localStorage.setItem('player_id', idData.game_id);
+        localStorage.setItem('username', username);
 
-            window.location.href = '../mainscreen/game.html'
-
-        } else {
-            alert(idData.error);
-        }
+        window.location.href = '../mainscreen/game.html'
 
     } catch (err) {
         console.error(err)
