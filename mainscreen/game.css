@@ -67,11 +67,9 @@ background-repeat:
 }
 
 #game-layout {
-    display: grid;
-    grid-template-columns: 220px minmax(650px, 1fr) 260px;
+    display: flex;
     height: calc(100vh - 70px);
     gap: 25px;
-    align-items: start;
 }
 
 #left-side {
@@ -105,6 +103,7 @@ background-repeat:
 }
 
 #center {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -171,4 +170,13 @@ background-repeat:
     border-radius: 15px;
     padding: 15px;
     min-height: 220px;
+}
+
+@media (max-width: 1000px) {
+    #left-side {
+        flex: 0 0 180px;
+    }
+    #right-side {
+        flex: 0 0 200px;
+    }
 }
