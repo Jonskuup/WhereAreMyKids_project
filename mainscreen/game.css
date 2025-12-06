@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "BubbleFont";
+    src: url("../fonts/DailyBubble-OGGdA.ttf") format("truetype");
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -56,6 +61,31 @@ background-repeat:
 #side-panel {
     background: #ced8d6;
     border-radius: 12px;
+}
+
+#leaveButton {
+    font-family: "BubbleFont", sans-serif;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    background-color: #ff6f61;
+    color: white;
+    box-shadow: 0 5px #d45b50;
+    transition: all 0.2s;
+}
+
+#leaveButton:active {
+    box-shadow: 0 2px #d45b50;
+    transform: translateY(3px);
+}
+
+#leaveButton:hover {
+    background-color: #ff8576;
 }
 
 #europe-map {
