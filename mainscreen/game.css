@@ -10,6 +10,7 @@ body {
 
 html {
 height: 100%;
+    overflow: hidden;
 margin: 0;
 font-family: Arial, sans-serif;
 background-color: #738080;
@@ -35,32 +36,9 @@ background-repeat:
     no-repeat;
 }
 
-#layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    height: 90vh;
-    padding: 30px;
-    gap: 30px;
-}
-
-#map-area {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-left: 120px;
-    padding-top: 30px;
-    background: #9b9b9b;
-}
-
-#map {
+#top {
     position: relative;
-    width: 100%;
-    max-width: 900px;
-}
-
-#side-panel {
-    background: #ced8d6;
-    border-radius: 12px;
+    height: 70px;
 }
 
 #leaveButton {
@@ -88,8 +66,97 @@ background-repeat:
     background-color: #ff8576;
 }
 
+#game-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(650px, 1fr) 260px;
+    height: calc(100vh - 70px);
+    gap: 25px;
+    align-items: start;
+}
+
+#left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+#helpButton {
+    font-family: "BubbleFont", sans-serif;
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    background: #ff6f61;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px #d45b50;
+}
+
+#helpButton:active {
+    box-shadow: 0 2px #d45b50;
+    transform: translateY(2px);
+}
+
+#info-box {
+    flex: 1;
+    background: #ced8d6;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+#center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#map-area {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    max-height: calc(100vh - 220px);
+    aspect-ratio: 1 / 1;
+    background: #9b9b9b;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #europe-map {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+}
+
+#guess-area {
+    margin-top: 22px;
+    display: flex;
+    gap: 10px;
+}
+
+#guess-input {
+    padding: 10px 14px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+#guess-button:active {
+    box-shadow: 0 2px #d45b50;
+    transform: translateY(2px);
+}
+
+#right-side {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#status-box {
+    background: #ced8d6;
+    border-radius: 16px;
+    padding: 15px;
+    min-height: 220px;
 }
