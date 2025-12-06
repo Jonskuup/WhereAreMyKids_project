@@ -41,6 +41,7 @@ def player_exists(screen_name):
 def game_id(screen_name):
     gid = get_game_id(screen_name)
     if gid:
+        assign_monkey_countries(gid)
         return jsonify({"game_id": gid})
     return jsonify({"error": "Player not found"}), 404
 
