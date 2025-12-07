@@ -184,7 +184,9 @@ background-repeat:
     background: #ced8d6;
     border-radius: 15px;
     padding: 15px;
+    height: 500px;
     min-height: 220px;
+    overflow-y: auto;
     font-size: 20px;
     line-height: 1.5;
 }
@@ -207,12 +209,29 @@ background-repeat:
     color: #556060;
 }
 
-#visited-list {
+.loading-dots::after {
+    content: "...";
+    animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0% { content: ""; }
+    33% { content: "."; }
+    66% { content: ".."; }
+    100% {content: "..."; }
+}
+
+#adventure-log {
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+#status {
     list-style: none;
     padding-left: 0;
 }
 
-#visited-list li {
+#status li {
     padding: 6px 10px;
     border-bottom: 1px solid #bbb;
     font-size: 18px;

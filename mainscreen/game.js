@@ -16,15 +16,48 @@ const mapObject = document.getElementById('europe-map');
 // Tallennetaan löydetyt maat, jotta väri pysyy
 const guessedCountries = new Set();
 
+function addLog(text) {
+    const ul = document.getElementById('status');
+    const li = document.createElement('li');
+    li.textContent = text;
+    ul.append(li);
+
+    const box = document.getElementById('status-box');
+    box.scrollTop = box.scrollHeight;
+    return li;
+}
+
 async function loadMonkeyCount() {
-    const res = await fetch(`http://127.0.0.1:5000/monkeys_found/${gameId}`);
+    const res = await fetch(`http://localhost:5000/monkeys_found/${gameId}`);
     const data = await res.json();
     document.getElementById('monkeys_found').textContent = data.found;
 }
 
+// Haetaan aiemmin käydyt maat ja väritetään ne karttaan
+async function loadVisitedCountries() {
+    const response = await fetch(`http://localhost:5000/visited/${gameId}`);
+    const data = await response.json();
+    const visitedCountries = data.visited.map(country => country.toLowerCase());
+    const allPaths = mapObject.contentDocument.querySelectorAll('path');
+
+    for (const path of allPaths) {
+      const countryName = path.getAttribute('name');
+
+        if (countryName && visitedCountries.includes(countryName.toLowerCase())) {
+          path.style.fill = '#d45b50';
+          guessedCountries.add(countryName.toLowerCase());
+        }
+    }
+}
+
 // Lähetä käydyt maat ja update jos apinapoikanen löytyy
 async function markCountry(country){
-    const res = await fetch('http://127.0.0.1:5000/visit_country', {
+    addLog(`Flying to ${country}`);
+
+    const loadingItem = addLog('Loading');
+    loadingItem.classList.add('loading-dots');
+
+    const res = await fetch('http://localhost:5000/visit_country', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ game_id: gameId, country: country })
@@ -32,8 +65,13 @@ async function markCountry(country){
 
     const data = await res.json();
 
+    loadingItem.remove();
+
     if (data.found) {
+        addLog('Baby monkey found!');
         loadMonkeyCount();
+    } else {
+      addLog('No baby monkeys found here.')
     }
 }
 
@@ -53,20 +91,22 @@ mapObject.addEventListener('load', () => {
         paths.forEach(path => {
             const name = path.getAttribute('name');
 
-            if (name !== null && name.toLowerCase() === countryName) {
+            if (name && name.toLowerCase() === countryName) {
+                if (guessedCountries.has(countryName)) {
+                  addLog(`You've already visited this country.`);
+                  found = true;
+                  return;
+                }
+
                 path.style.fill = '#d45b50';
                 guessedCountries.add(countryName);
-                found = true;
                 markCountry(name);
-            } else {
-                if (name !== null && guessedCountries.has(name.toLowerCase()) === false) {
-                    path.style.fill = '#ececec';
-                }
+                found = true;
             }
         });
 
         if (found === false) {
-            alert('Country not found!');
+            addLog(`Country is not on our EU list or check the spelling.`);
         }
 
         input.value = '';
@@ -81,4 +121,5 @@ mapObject.addEventListener('load', () => {
     guessButton.addEventListener('click', checkGuess);
 
     loadMonkeyCount();
+    loadVisitedCountries();
 });

@@ -4,7 +4,7 @@ const continueGame = document.getElementById('continueGame');
 const existingUser = document.getElementById('existingUser');
 const message = document.getElementById('message');
 
-const server_url = 'http://127.0.0.1:5000';
+const server_url = 'http://localhost:5000';
 
 /* Step 1: Are you a new player? */
 document.getElementById('yesNew').addEventListener('click', () => {

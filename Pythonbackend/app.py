@@ -76,5 +76,12 @@ def help_view(game_id):
     data = help_command(game_id)
     return jsonify(data)
 
+# Käydyt maat pelaajan mukaan
+@app.route('/visited/<game_id>', methods=['GET'])
+def visited(game_id):
+    from game_functions import get_visited_countries
+    data = get_visited_countries(game_id)
+    return jsonify({"visited": data})
+
 if __name__ == '__main__':
     app.run(debug=True)

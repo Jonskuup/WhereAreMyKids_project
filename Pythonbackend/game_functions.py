@@ -125,6 +125,15 @@ def mark_country_visited(game_id, country):
     db.get_conn().commit()
     cursor.close()
 
+# Funktio, joka palauttaa kaikki käydyt maat pelaajalle
+def get_visited_countries(game_id):
+    sql = "select country_name from käydyt_maat where game_id = %s"
+    cursor = db.get_conn().cursor()
+    cursor.execute(sql, (game_id,))
+    result = [row[0] for row in cursor.fetchall()]
+    cursor.close()
+    return result
+
 # Help -komento
 def help_command(game_id):
     cursor = db.get_conn().cursor()
