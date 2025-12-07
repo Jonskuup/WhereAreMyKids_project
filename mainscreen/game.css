@@ -127,7 +127,7 @@ background-repeat:
     height: auto;
     max-height: calc(100vh - 220px);
     aspect-ratio: 1 / 1;
-    background: #9b9b9b;
+    background: #556060;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -135,7 +135,11 @@ background-repeat:
 }
 
 #europe-map {
-    width: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
     height: 100%;
     border-radius: 15px;
 }
