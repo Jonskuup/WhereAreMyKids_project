@@ -111,6 +111,10 @@ background-repeat:
     min-height: 220px;
     font-size: 20px;
     line-height: 1.5;
+    font-family: "BubbleFont", sans-serif;
+    color: #556060;
+    text-align: center;
+    font-weight: bold;
 }
 
 #center {
@@ -188,6 +192,36 @@ background-repeat:
     min-height: 220px;
     font-size: 20px;
     line-height: 1.5;
+}
+
+#history-box {
+    background: #ced8d6;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 20px;
+    flex: 1;
+    overflow-y: auto; /* scroll */
+}
+
+#adventure-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "BubbleFont", sans-serif;
+    color: #556060;
+}
+
+#visited-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#visited-list li {
+    padding: 6px 10px;
+    border-bottom: 1px solid #bbb;
+    font-size: 18px;
+    line-height: 1.4;
 }
 
 @media (max-width: 1000px) {
