@@ -69,7 +69,17 @@ async function markCountry(country){
 
     if (data.found) {
         addLog('Baby monkey found!');
-        loadMonkeyCount();
+        loadMonkeyCount().then(() => {
+            const found = parseInt(document.getElementById('monkeys_found').textContent);
+            if (found === 10) {
+                const message = document.getElementById('all-found');
+                message.style.display = 'block';
+
+                setTimeout(() => {
+                    window.location.href = '../finishgame/finish.html';
+                }, 2500);
+            }
+        });
     } else {
       addLog('No baby monkeys found here.')
     }
