@@ -47,8 +47,8 @@ document.getElementById('Enter').addEventListener('click', async () => {
         if (response.ok) {
             enterUsername.classList.add('hidden');
             message.textContent = `Welcome, ${username}! Starting a new game...`;
-            localStorage.setItem('player_id', data.player_id);
-            localStorage.setItem('username', username);
+            localStorage.setItem('game_id', data.player_id);
+            localStorage.setItem('player_name', username);
 
             window.location.href = '../mainscreen/game.html'
 
@@ -89,8 +89,8 @@ document.getElementById('submitExistingUser').addEventListener('click', async ()
 
         existingUser.classList.add('hidden');
         message.textContent = `Welcome back, ${username}! Continuing your game...`;
-        localStorage.setItem('player_id', idData.game_id);
-        localStorage.setItem('username', username);
+        localStorage.setItem('game_id', idData.game_id);
+        localStorage.setItem('player_name', username);
 
         window.location.href = '../mainscreen/game.html'
 
