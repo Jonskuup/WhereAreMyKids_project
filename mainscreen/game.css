@@ -5,15 +5,15 @@
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 40px;
 }
 
 html {
-height: 100%;
+    height: 100%;
     overflow: hidden;
-margin: 0;
-font-family: Arial, sans-serif;
-background-color: #738080;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #738080;
 
 background-image:
     url('images/front.png'),
@@ -73,7 +73,7 @@ background-repeat:
 }
 
 #left-side {
-    flex: 0 0 220px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -88,7 +88,8 @@ background-repeat:
     background: #ff6f61;
     color: white;
     cursor: pointer;
-    box-shadow: 0 4px #d45b50;
+    box-shadow: 0 5px #d45b50;
+    box-sizing: border-box;
 }
 
 #helpButton:active {
@@ -101,10 +102,12 @@ background-repeat:
     background: #ced8d6;
     border-radius: 15px;
     padding: 15px;
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 #center {
-    flex: 1;
+    flex: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,7 +164,7 @@ background-repeat:
 }
 
 #right-side {
-    flex: 0 0 260px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -172,6 +175,8 @@ background-repeat:
     border-radius: 15px;
     padding: 15px;
     min-height: 220px;
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 @media (max-width: 1000px) {
