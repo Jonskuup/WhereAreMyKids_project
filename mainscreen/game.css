@@ -5,7 +5,7 @@
 
 body {
     margin: 0;
-    padding: 40px;
+    padding: 0 40px;
 }
 
 html {
@@ -43,7 +43,7 @@ background-repeat:
 
 #leaveButton {
     font-family: "BubbleFont", sans-serif;
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     padding: 10px 15px;
@@ -97,11 +97,18 @@ background-repeat:
     transform: translateY(2px);
 }
 
-#info-box {
+#left-side {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#info-box {
     background: #ced8d6;
     border-radius: 15px;
     padding: 15px;
+    min-height: 220px;
     font-size: 20px;
     line-height: 1.5;
 }
