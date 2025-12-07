@@ -52,18 +52,11 @@ background-repeat:
     margin: 0;
 }
 
-.score_label {
-    font-size: 20px;
-    font-weight: bold;
-    color: #234040;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-    animation: slideDown 1s ease-out;
-}
 
-#time_score {
+#text {
     font-size: 20px;
     font-weight: bold;
-    color: #234040;
+    color: #294747;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     animation: slideDown 1s ease-out;
 }
@@ -95,6 +88,7 @@ h1 {
     font-size: 20px;
     margin-bottom: 5px;
 }
+
 #restartButton, button {
     font-family: BubbleFont, sans-serif;
 }
@@ -110,7 +104,9 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 3px #d45b50;
+    border: none;
+    outline: none;
 }
 
 #restartButton:hover {
@@ -137,6 +133,20 @@ h1 {
     height: auto;
 }
 
+.trophy {
+    position: fixed;
+    top: 50%;
+    right: 120px;
+    transform: translateY(-50%);
+    width: 200px;
+    z-index: 500;
+    animation: wiggle 1.5s ease-in-out infinite;
+}
+
+.trophy img {
+    width: 200px;
+    height: auto;
+}
 
 /* Animaatiot */
 
@@ -148,4 +158,12 @@ to { opacity: 1; }
 @keyframes slideDown {
 from { transform: translateY(-50px); opacity: 0; }
 to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wiggle {
+    0%   { transform: translateY(-50%) rotate(0deg); }
+    25%  { transform: translateY(-50%) rotate(-10deg); }
+    50%  { transform: translateY(-50%) rotate(0deg); }
+    75%  { transform: translateY(-50%) rotate(10deg); }
+    100% { transform: translateY(-50%) rotate(0deg); }
 }
