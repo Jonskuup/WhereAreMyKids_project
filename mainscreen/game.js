@@ -1,3 +1,12 @@
+const countriesList = [
+    "Albania","Austria","Belgium","Bulgaria","Bosnia and Herzegovina","Belarus",
+    "Switzerland","Czech Republic","Germany","Denmark","Estonia","Finland",
+    "United Kingdom","Greece","Croatia","Hungary","Ireland","Iceland","Italy",
+    "Lithuania","Luxembourg","Latvia","Moldova","Macedonia","Montenegro",
+    "Netherlands","Norway","Poland","Portugal","Romania","Serbia","Slovakia",
+    "Slovenia","Sweden","Ukraine","France","Spain"
+];
+
 // Leave button will go back to start game screen
 document.getElementById("leaveButton").addEventListener("click", () => {
     window.location.href = "../startgame/startgame.html";
@@ -132,4 +141,50 @@ mapObject.addEventListener('load', () => {
 
     loadMonkeyCount();
     loadVisitedCountries();
+});
+
+const helpBtn = document.getElementById("helpButton");
+const helpBubble = document.getElementById("helpBubble");
+const countryListDiv = document.getElementById("countryList");
+
+helpBtn.addEventListener("click", async () => {
+    helpBubble.style.display = (helpBubble.style.display === "block") ? "none" : "block";
+
+    let visited = [];
+    try {
+        const res = await fetch(`http://localhost:5000/visited/${gameId}`);
+        const data = await res.json();
+        visited = data.visited.map(v => v.toLowerCase());
+    } catch (e) {
+        console.log("No backend found, continue without visited marks");
+    }
+
+    countryListDiv.innerHTML = "";
+
+    const chunkSize = 10;
+    for (let i = 0; i < countriesList.length; i += chunkSize) {
+        let column = document.createElement("div");
+        column.classList.add("country-column");
+
+        countriesList.slice(i, i+chunkSize).forEach(name => {
+            let item = document.createElement("div");
+            item.classList.add("country-item");
+
+            let check = visited.includes(name.toLowerCase()) ? "✓" : "";
+
+            item.innerHTML = `
+                <span>${check ? "[✔]" : "[ ]"} ${name}</span>
+`;
+
+            column.appendChild(item);
+        });
+
+        countryListDiv.appendChild(column);
+    }
+});
+
+document.addEventListener("click", e => {
+    if (!helpBtn.contains(e.target) && !helpBubble.contains(e.target)) {
+        helpBubble.style.display = "none";
+    }
 });

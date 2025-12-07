@@ -98,6 +98,48 @@ background-repeat:
     transform: translateY(2px);
 }
 
+#helpBubble {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    width: 600px;
+    background-color: #ced8d6;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 15px;
+    display: none;
+    z-index: 2000;
+}
+
+#countrylist_title {
+    text-align: center;
+    font-weight: bold;
+    font-family: "BubbleFont", sans-serif;
+    color: #556060;
+}
+
+#countryList {
+    display: flex;
+    gap: 12px;
+    padding: 2px 2px;
+}
+
+.country-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.country-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 8px;
+    width: 140px;
+}
+
+
 #info-box {
     background: #ced8d6;
     border-radius: 15px;
