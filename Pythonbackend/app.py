@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import requests
 
 from game_functions import (
-    get_country_codes,
+    get_country_iso,
     get_eu_countries,
     add_player,
     does_player_exist,
@@ -14,12 +15,30 @@ from game_functions import (
     help_command
 )
 
+# Oma api avain api-ninjas.com sivulta
+api_key = "xHTffgL/GRv8RLLGL80Qow==Sh1uwO8NHZwCBfVJ"
+
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/country_codes", methods=["GET"])
-def country_codes():
-    return jsonify(get_country_codes())
+@app.route("/flag/<country>", methods=["GET"])
+def flag(country):
+    iso = get_country_iso(country)
+    if not iso:
+        return jsonify({"error": "Country ISO code not found"}), 404
+
+    url = f"https://api.api-ninjas.com/v1/countryflag?country={iso}"
+
+    response = requests.get(url, headers={"X-Api-Key": api_key})
+
+    if response.status_code == 200:
+        data = response.json()
+        return jsonify({
+            "rectangle_image_url": data.get("rectangle_image_url")
+        })
+    else:
+        return jsonify({"error": "Flag API request failed"}), 500
+
 
 # Luodaan uusi pelaaja
 @app.route('/new_player', methods=['POST'])

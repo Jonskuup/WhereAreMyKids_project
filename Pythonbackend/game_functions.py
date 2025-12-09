@@ -5,14 +5,6 @@ import requests
 # Luo tietokantayhteys
 db = Database()
 
-# Ulkoinen API maiden lipuille
-def get_country_codes():
-    url = "https://flagcdn.com/en/codes.json"
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    return {}
-
 # PLAYER MANAGEMENT
 
 # Haetaan game-taulusta suurin id-arvo ja palautetaan suurin arvo +1
@@ -58,6 +50,17 @@ def get_game_id(screen_name):
     return None
 
 # COUNTRY/MONKEY MANAGEMENT
+
+# Hakee tietokannasta ne maiden ISO-koodit
+def get_country_iso(country_name):
+    sql = "select iso_country from country where lower(name) = lower(%s)"
+    cursor = db.get_conn().cursor()
+    cursor.execute(sql, (country_name,))
+    result = cursor.fetchone()
+    cursor.close()
+    if result:
+        return result[0]
+    return None
 
 # Palauttaa kaikki EU maat
 def get_eu_countries():

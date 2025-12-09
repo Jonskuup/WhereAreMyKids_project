@@ -177,11 +177,10 @@ background-repeat:
     justify-content: center;
 }
 
-#theFlag {
-    width: 70px;
-    height: auto;
-    border: 6px;
-    margin-top: 5px;
+.flag img {
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 6px;
 }
 
 #center {

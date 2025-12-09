@@ -8,16 +8,6 @@ const countriesList = [
     "Slovenia","Sweden","Ukraine","France","Spain"
 ];
 
-// Ulkoinen API maiden lipuista
-let countryCodes = {};
-
-fetch("http://localhost:5000/country_codes")
-   .then(r => r.json())
-   .then(data => {
-       countryCodes = data;
-   })
-    .catch(()=> console.log("Could not load country codes"));
-
 // Leave button will go back to start game screen
 document.getElementById("leaveButton").addEventListener("click", () => {
     window.location.href = "../startgame/startgame.html";
@@ -47,6 +37,28 @@ function addLog(text) {
     return li;
 }
 
+async function showFlag(country) {
+    try {
+      const response = await fetch(`http://localhost:5000/flag/${encodeURIComponent(country)}`);
+      const data = await response.json();
+
+      const theFlag = document.getElementById('theFlag');
+      theFlag.innerHTML = "";
+
+      if (data.rectangle_image_url) {
+        const img = document.createElement("img");
+        img.src = data.rectangle_image_url;
+        img.alt = `${country} flag`;
+        theFlag.appendChild(img);
+      } else {
+        theFlag.textContent = "Flag not found";
+        }
+
+    } catch (err) {
+        console.log("Flag fetch error:", err);
+    }
+}
+
 async function loadMonkeyCount() {
     const res = await fetch(`http://localhost:5000/monkeys_found/${gameId}`);
     const data = await res.json();
@@ -68,23 +80,6 @@ async function loadVisitedCountries() {
           guessedCountries.add(countryName.toLowerCase());
         }
     }
-}
-
-function showFlag(country) {
-    const code = countryCodes[country] || countryCodes[country.toLowerCase()];
-    if (!code) {
-        console.log("No flag code found")
-        return;
-    }
-
-    const theFlag = document.getElementById("theFlag");
-    theFlag.innerHTML = "";
-
-    const img = document.createElement("img");
-    img.src = `https://flagcdn.com/48x36/${code}.png`;
-    img.title = country; // hover tooltip
-
-    theFlag.appendChild(img);
 }
 
 // Lähetä käydyt maat ja update jos apinapoikanen löytyy
