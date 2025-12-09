@@ -1,6 +1,5 @@
 from database import Database
 import random
-import requests
 
 # Luo tietokantayhteys
 db = Database()

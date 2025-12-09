@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 
+from class_player import Player
 from game_functions import (
     get_country_iso,
     get_eu_countries,
@@ -16,7 +17,7 @@ from game_functions import (
 )
 
 # Oma api avain api-ninjas.com sivulta
-api_key = "xHTffgL/GRv8RLLGL80Qow==Sh1uwO8NHZwCBfVJ"
+api_key = "sun oma api avain"
 
 app = Flask(__name__)
 CORS(app)
@@ -38,7 +39,6 @@ def flag(country):
         })
     else:
         return jsonify({"error": "Flag API request failed"}), 500
-
 
 # Luodaan uusi pelaaja
 @app.route('/new_player', methods=['POST'])
@@ -65,8 +65,10 @@ def player_exists(screen_name):
 def game_id(screen_name):
     gid = get_game_id(screen_name)
     if gid:
-        assign_monkey_countries(gid)
-        return jsonify({"game_id": gid})
+        found = monkeys_found_count(gid)
+        p = Player(screen_name, gid)
+        p.set_monkeys(found)
+        return p.return_json()
     return jsonify({"error": "Player not found"}), 404
 
 # Haetaan EU-maat
