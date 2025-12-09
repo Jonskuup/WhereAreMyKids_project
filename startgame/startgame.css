@@ -96,17 +96,19 @@ h2 {
 /* Bubble */
 .bubble {
     position: absolute;
-    top: 60px; /* below header */
+    top: 60px;
     right: 20px;
     width: 400px; /* leveempi kupla */
     padding: 50px;
     background-color: #ced8d6;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    display: none; /* hidden by default */
+    display: none; /* piilossa alussa */
     font-size: 1em; /* isompi fontti */
     z-index: 1001;
     text-align: left;
+    font-weight: bold;
+    color: #2b2b2b;
 }
 
 
@@ -121,6 +123,7 @@ button {
     color: white;
     box-shadow: 0 5px #d45b50;
     transition: all 0.2s;
+    font-weight: bold;
 }
 
 button:active {

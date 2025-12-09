@@ -43,18 +43,18 @@ background-repeat:
 
 #leaveButton {
     font-family: "BubbleFont", sans-serif;
+    font-size: 1em;
+    font-weight: bold;
     position: fixed;
+    padding: 10px 15px;
     top: 20px;
     right: 20px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
     border-radius: 15px;
+    border: none;
     background-color: #ff6f61;
-    color: white;
     box-shadow: 0 5px #d45b50;
-    transition: all 0.2s;
+    color: white;
+    cursor: pointer;
 }
 
 #leaveButton:active {
@@ -83,19 +83,25 @@ background-repeat:
 
 #helpButton {
     font-family: "BubbleFont", sans-serif;
+    font-size: 1em;
+    font-weight: bold;
     padding: 12px;
     border-radius: 15px;
     border: none;
     background: #ff6f61;
+    box-shadow: 0 5px #d45b50;
     color: white;
     cursor: pointer;
-    box-shadow: 0 5px #d45b50;
     box-sizing: border-box;
 }
 
 #helpButton:active {
     box-shadow: 0 2px #d45b50;
     transform: translateY(2px);
+}
+
+#helpButton:hover {
+    background-color: #ff8576;
 }
 
 #helpBubble {
@@ -151,17 +157,19 @@ background-repeat:
     color: #556060;
     text-align: center;
     font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 #flag-box {
     background: #ced8d6;
     border-radius: 15px;
     padding: 15px;
-    min-height: 220px;
+    min-height: 160px;
     font-size: 17px;
     line-height: 1.5;
     font-family: "BubbleFont", sans-serif;
     color: #556060;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     text-align: center;
     font-weight: bold;
     flex-direction: column;
@@ -221,18 +229,24 @@ background-repeat:
 
 #guess-button {
     font-family: "BubbleFont", sans-serif;
+    font-size: 1em;
+    font-weight: bold;
     padding: 12px;
     border-radius: 15px;
     border: none;
     background: #ff6f61;
+    box-shadow: 0 4px #d45b50;
     color: white;
     cursor: pointer;
-    box-shadow: 0 4px #d45b50;
 }
 
 #guess-button:active {
     box-shadow: 0 2px #d45b50;
     transform: translateY(2px);
+}
+
+#guess-button:hover {
+    background-color: #ff8576;
 }
 
 #right-side {
@@ -251,6 +265,7 @@ background-repeat:
     overflow-y: auto;
     font-size: 20px;
     line-height: 1.5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 #history-box {
@@ -307,8 +322,10 @@ background-repeat:
     transform: translate(-50%, -50%);
     font-family: "BubbleFont", sans-serif;
     font-size: 70px;
+    font-weight: bold;
     color: #ff6f61;
     background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     padding: 25px 50px;
     border-radius: 20px;
     display: none;

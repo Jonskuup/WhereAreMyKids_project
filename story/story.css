@@ -89,11 +89,12 @@ header {
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px #d45b50;
+    font-weight: bold;
 }
 
 #skipButton:hover {
-    background: #ff4444;
+    background: #ff8576;
 }
 
 .rainyCloud {
