@@ -1,3 +1,4 @@
+// Lista maiden nimistä hardkoodattuna
 const countriesList = [
     "Albania","Austria","Belgium","Bulgaria","Bosnia and Herzegovina","Belarus",
     "Switzerland","Czech Republic","Germany","Denmark","Estonia","Finland",
@@ -6,6 +7,16 @@ const countriesList = [
     "Netherlands","Norway","Poland","Portugal","Romania","Serbia","Slovakia",
     "Slovenia","Sweden","Ukraine","France","Spain"
 ];
+
+// Ulkoinen API maiden lipuista
+let countryCodes = {};
+
+fetch("http://localhost:5000/country_codes")
+   .then(r => r.json())
+   .then(data => {
+       countryCodes = data;
+   })
+    .catch(()=> console.log("Could not load country codes"));
 
 // Leave button will go back to start game screen
 document.getElementById("leaveButton").addEventListener("click", () => {
@@ -59,6 +70,23 @@ async function loadVisitedCountries() {
     }
 }
 
+function showFlag(country) {
+    const code = countryCodes[country] || countryCodes[country.toLowerCase()];
+    if (!code) {
+        console.log("No flag code found")
+        return;
+    }
+
+    const theFlag = document.getElementById("theFlag");
+    theFlag.innerHTML = "";
+
+    const img = document.createElement("img");
+    img.src = `https://flagcdn.com/48x36/${code}.png`;
+    img.title = country; // hover tooltip
+
+    theFlag.appendChild(img);
+}
+
 // Lähetä käydyt maat ja update jos apinapoikanen löytyy
 async function markCountry(country){
     addLog(`Flying to ${country}`);
@@ -75,6 +103,8 @@ async function markCountry(country){
     const data = await res.json();
 
     loadingItem.remove();
+
+    showFlag(country);
 
     if (data.found) {
         addLog('Baby monkey found!');

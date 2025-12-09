@@ -153,6 +153,29 @@ background-repeat:
     font-weight: bold;
 }
 
+#flag-box {
+    background: #ced8d6;
+    border-radius: 15px;
+    padding: 15px;
+    min-height: 220px;
+    font-size: 17px;
+    line-height: 1.5;
+    font-family: "BubbleFont", sans-serif;
+    color: #556060;
+    text-align: center;
+    font-weight: bold;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+#theFlag {
+    width: 70px;
+    height: auto;
+    border: 6px;
+    margin-top: 5px;
+}
+
 #center {
     flex: 3;
     display: flex;

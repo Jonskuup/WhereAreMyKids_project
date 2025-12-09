@@ -1,8 +1,17 @@
 from database import Database
 import random
+import requests
 
 # Luo tietokantayhteys
 db = Database()
+
+# Ulkoinen API maiden lipuille
+def get_country_codes():
+    url = "https://flagcdn.com/en/codes.json"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    return {}
 
 # PLAYER MANAGEMENT
 

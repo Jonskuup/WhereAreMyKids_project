@@ -10,5 +10,6 @@ class Database:
             password='salasana',
             autocommit=True
         )
+
     def get_conn(self):
         return self.conn
