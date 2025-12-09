@@ -19,7 +19,7 @@ CORS(app)
 
 @app.route("/country_codes", methods=["GET"])
 def country_codes():
-    return jsonify(get_country_codes()
+    return jsonify(get_country_codes())
 
 # Luodaan uusi pelaaja
 @app.route('/new_player', methods=['POST'])
