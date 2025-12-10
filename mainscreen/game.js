@@ -1,4 +1,4 @@
-// Lista maiden nimistä hardkoodattuna
+// Lista EU-maiden nimistä
 const countriesList = [
     "Albania","Austria","Belgium","Bulgaria","Bosnia and Herzegovina","Belarus",
     "Switzerland","Czech Republic","Germany","Denmark","Estonia","Finland",
@@ -17,15 +17,16 @@ document.getElementById("leaveButton").addEventListener("click", () => {
 const playerName = localStorage.getItem('player_name');
 const gameId = localStorage.getItem('game_id');
 
-document.getElementById('player_name').textContent = playerName ?? "---";
+document.getElementById('player_name').textContent = playerName || "---";
 
 const input = document.getElementById('guess-input');
 const guessButton = document.getElementById('guess-button');
 const mapObject = document.getElementById('europe-map');
 
-// Tallennetaan löydetyt maat, jotta väri pysyy
+// Tallennetaan löydetyt maat, jotta väri pysyy kartalla
 const guessedCountries = new Set();
 
+// Toiminnallisuus oikean reunan status boxiin
 function addLog(text) {
     const ul = document.getElementById('status');
     const li = document.createElement('li');
@@ -37,25 +38,22 @@ function addLog(text) {
     return li;
 }
 
+// Vasemman alareunan lippu boxin toiminnallisuus
 async function showFlag(country) {
-    try {
-      const response = await fetch(`http://localhost:5000/flag/${encodeURIComponent(country)}`);
-      const data = await response.json();
+    const response = await fetch(`http://localhost:5000/flag/${encodeURIComponent(country)}`);
+    const data = await response.json();
 
-      const theFlag = document.getElementById('theFlag');
-      theFlag.innerHTML = "";
+    // Tyhjennetään -> vanha lippu pois näkyvistä
+    const flagBox = document.getElementById('theFlag');
+    flagBox.innerHTML = "";
 
-      if (data.rectangle_image_url) {
-        const img = document.createElement("img");
-        img.src = data.rectangle_image_url;
-        img.alt = `${country} flag`;
-        theFlag.appendChild(img);
-      } else {
-        theFlag.textContent = "Flag not found";
-        }
-
-    } catch (err) {
-        console.log("Flag fetch error:", err);
+    if (data.flag) {
+      const img = document.createElement("img");
+      img.src = data.flag;
+      img.alt = `${country} flag`;
+      flagBox.appendChild(img);
+    } else {
+      flagBox.textContent = "Flag not found";
     }
 }
 
@@ -91,14 +89,13 @@ async function markCountry(country){
 
     const res = await fetch('http://localhost:5000/visit_country', {
         method: 'POST',
-        headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify({ game_id: gameId, country: country })
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({game_id: gameId, country: country})
     });
 
     const data = await res.json();
 
     loadingItem.remove();
-
     showFlag(country);
 
     if (data.found) {
@@ -168,6 +165,7 @@ mapObject.addEventListener('load', () => {
     loadVisitedCountries();
 });
 
+// Help painikkeen toiminto
 const helpBtn = document.getElementById("helpButton");
 const helpBubble = document.getElementById("helpBubble");
 const countryListDiv = document.getElementById("countryList");
@@ -195,7 +193,7 @@ helpBtn.addEventListener("click", async () => {
             let item = document.createElement("div");
             item.classList.add("country-item");
 
-            let check = visited.includes(name.toLowerCase()) ? "✓" : "";
+            let check = visited.includes(name.toLowerCase()) ? "✔" : "";
 
             item.innerHTML = `
                 <span>${check ? "[✔]" : "[ ]"} ${name}</span>

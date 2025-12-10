@@ -13,32 +13,23 @@ from game_functions import (
     monkeys_found_count,
     check_country,
     mark_country_visited,
-    help_command
+    help_command,
+    get_visited_countries
 )
 
 # Oma api avain api-ninjas.com sivulta
-api_key = "sun oma api avain"
+api_key = "oma api avain"
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/flag/<country>", methods=["GET"])
+# Haetaan lippu API:n url
+@app.route("/flag/<country>")
 def flag(country):
     iso = get_country_iso(country)
-    if not iso:
-        return jsonify({"error": "Country ISO code not found"}), 404
-
     url = f"https://api.api-ninjas.com/v1/countryflag?country={iso}"
-
     response = requests.get(url, headers={"X-Api-Key": api_key})
-
-    if response.status_code == 200:
-        data = response.json()
-        return jsonify({
-            "rectangle_image_url": data.get("rectangle_image_url")
-        })
-    else:
-        return jsonify({"error": "Flag API request failed"}), 500
+    return jsonify({"flag": response.json().get("rectangle_image_url")})
 
 # Luodaan uusi pelaaja
 @app.route('/new_player', methods=['POST'])
@@ -55,13 +46,13 @@ def new_player():
     return jsonify({"player_id": player_id})
 
 # Tarkistetaan onko pelaaja olemassa
-@app.route('/player_exists/<screen_name>', methods=['GET'])
+@app.route('/player_exists/<screen_name>')
 def player_exists(screen_name):
     exists = does_player_exist(screen_name)
     return jsonify ({"exists": exists})
 
 # Haetaan game ID
-@app.route('/game_id/<screen_name>', methods=['GET'])
+@app.route('/game_id/<screen_name>')
 def game_id(screen_name):
     gid = get_game_id(screen_name)
     if gid:
@@ -72,7 +63,7 @@ def game_id(screen_name):
     return jsonify({"error": "Player not found"}), 404
 
 # Haetaan EU-maat
-@app.route('/eu_countries', methods=['GET'])
+@app.route('/eu_countries')
 def eu_countries():
     countries = get_eu_countries()
     return jsonify({"countries": [c.title() for c in countries]})
@@ -83,29 +74,26 @@ def visit_country():
     data = request.json
     gid = data.get('game_id')
     country = data.get('country')
-    if not gid or not country:
-        return jsonify({"error": "game_id and country are required"}), 400
     country = country.title()
     found = check_country(gid, country)
     mark_country_visited(gid, country)
     return jsonify({"found": found})
 
 # Monta apinaa löydetty
-@app.route('/monkeys_found/<game_id>', methods=['GET'])
+@app.route('/monkeys_found/<game_id>')
 def found_count(game_id):
     count = monkeys_found_count(game_id)
     return jsonify({"found": count})
 
 # Help-komento
-@app.route('/help/<game_id>', methods=['GET'])
+@app.route('/help/<game_id>')
 def help_view(game_id):
     data = help_command(game_id)
     return jsonify(data)
 
 # Käydyt maat pelaajan mukaan
-@app.route('/visited/<game_id>', methods=['GET'])
+@app.route('/visited/<game_id>')
 def visited(game_id):
-    from game_functions import get_visited_countries
     data = get_visited_countries(game_id)
     return jsonify({"visited": data})
 
